@@ -10,17 +10,18 @@ These examples have been tested out on:
 * Linux machine with docker installed AND
 * Windows machine with docker installed
 
+### Examples
+The examples are arranged below in increasing order of complexity.
 
-``
-|-- Docker-ubuntu-apache
-|   `-- Dockerfile
-|-- docker-ubuntu-fortunes
-|   `-- Dockerfile
-|-- docker-ubuntu-supervisor
-|   |-- Dockerfile
-|   `-- supervisord.conf
-|-- docker-whale
-|   `-- Dockerfile
-|-- README.md
-`-- runJenkinsDockerContainer
-``
+#### docker-whale
+Simple example from the Docker Getting Started Guide.
+
+#### docker-ubuntu-fortunes
+Ubuntu + the `fortunes` package.
+
+#### docker-ubuntu-apache
+Ubuntu + Apache Dockerfile.
+
+#### docker-ubuntu-supervisor
+Example of using Supervisor with Ubuntu.
+
