@@ -1,0 +1,10 @@
+#!/bin/bash
+echo "create data volume container named datastore"
+set -x
+docker create -v /dockerdata --name datastore ubuntu /bin/true
+set +x
+echo "create a container named db1 that uses the above data volume"
+echo "launch shell inside this container"
+set -x
+docker run -it --volumes-from datastore --name db1 ubuntu
+set +x
