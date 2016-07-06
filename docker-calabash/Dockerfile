@@ -19,9 +19,9 @@ RUN cd /opt && rm -f android-sdk_r24.4.1-linux.tgz
 
 # Other tools and resources of Android SDK
 ENV ANDROID_HOME /opt/android-sdk-linux
-ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
+ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/build-tools/24.0.0/
 RUN echo y | android update sdk --filter \
-platform-tools,build-tools-19.0.3,android-17,extra-android-support --no-ui \
+platform-tools,build-tools-19.0.3,build-tools-24.0.0,android-17,extra-android-support --no-ui \
 --force
 # Git to pull external repositories of Android app projects
 RUN apt-get install -y --no-install-recommends git
@@ -31,3 +31,6 @@ RUN apt-get clean
 
 # Calabash Android
 RUN gem install calabash-android
+
+# Expectations gem for assertions
+RUN gem install rspec-expectations
