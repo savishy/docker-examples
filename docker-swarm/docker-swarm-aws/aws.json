@@ -1,0 +1,55 @@
+{
+    "region": "ap-south-1",
+    "availability_zone": "a",
+    "ssh_username": "ec2-user",
+    "ec2s": {
+        "manager0": {
+            "ami_id": "ami-ffbdd790",
+            "instance_type": "t2.micro",
+            "tags": {
+                "Name": "manager0",
+                "Role": "manager",
+                "ServiceType": "manager"
+            }
+        },
+        "manager1": {
+            "ami_id": "ami-ffbdd790",
+            "instance_type": "t2.micro",
+            "tags": {
+                "Name": "manager1",
+                "Role": "manager",
+                "ServiceType": "manager"
+            }
+        },
+        "node0": {
+            "ami_id": "ami-ffbdd790",
+            "instance_type": "t2.micro",
+            "tags": {
+                "Name": "node0",
+                "Role": "node",
+                "ServiceType": "node"
+            }
+        },
+
+        "node1": {
+            "ami_id": "ami-ffbdd790",
+            "instance_type": "t2.micro",
+            "tags": {
+                "Name": "node1",
+                "Role": "node",
+                "ServiceType": "node"
+            }
+        },
+
+        "consul0": {
+            "ami_id": "ami-ffbdd790",
+            "instance_type": "t2.micro",
+            "tags": {
+                "Name": "consul0",
+                "Role": "discovery",
+                "ServiceType": "discovery"
+            }
+        }
+
+    }
+}
