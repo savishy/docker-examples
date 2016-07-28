@@ -1,0 +1,30 @@
+---
+- name: install docker and start daemon
+
+  # name of the host to run this on.
+  hosts: swarm_nodes, discovery_backend
+  vars:
+
+    # execute all commands as root
+    ansible_become_user: root
+    ansible_become_method: sudo
+    ansible_become: true
+
+  roles:
+    # Only one role: Docker
+  - install_docker
+
+- name: 
+
+  # name of the host to run this on.
+  hosts: discovery_backend
+  vars:
+
+    # execute all commands as root
+    ansible_become_user: root
+    ansible_become_method: sudo
+    ansible_become: true
+
+  roles:
+    # Only one role: Docker
+  - setup_discovery

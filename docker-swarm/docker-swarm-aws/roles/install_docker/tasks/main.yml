@@ -1,0 +1,43 @@
+---
+# add Docker repo to get the latest docker
+- name: add Docker repository
+  yum_repository:
+    name: docker
+    description: Docker Repository
+    baseurl: https://yum.dockerproject.org/repo/main/centos/7/
+    gpgcheck: yes
+    gpgkey: https://yum.dockerproject.org/gpg
+
+
+    # update yum
+- name: yum update
+  yum:
+    name: '*'
+    state: latest
+
+# install docker
+- name: install docker
+  yum:
+    name: docker
+    update_cache: yes
+    state: latest
+
+# install docker-py as it is needed by docker-image
+- name: install docker-py
+  pip:
+    name: docker-py
+    state: present
+
+- name: add ec2 user to docker group
+  # command: usermod -a -G docker ec2-user
+  user:
+    name: ec2-user
+    groups: docker
+
+- name: create DOCKER_OPTS
+  command: echo "OPTIONS=\"\${OPTIONS} -D -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock\"" >> /etc/sysconfig/docker
+
+- name: restart docker service
+  service:
+    name: docker
+    state: restarted
