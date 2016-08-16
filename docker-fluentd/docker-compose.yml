@@ -14,3 +14,6 @@ services:
       - "24224:24224"
     volumes:
       - /data:/fluentd/log
+      - ./fluentd:/fluentd/etc/
+    environment:
+      - FLUENTD_CONF=in_docker.conf
