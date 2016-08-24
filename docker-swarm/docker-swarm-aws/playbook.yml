@@ -1,5 +1,5 @@
 ---
-- name: install docker and start daemon
+- name: setup docker on all nodes
 
   # name of the host to run this on.
   hosts: swarm_nodes, discovery_backend
@@ -14,7 +14,7 @@
     # Only one role: Docker
   - install_docker
 
-- name: 
+- name: setup consul daemon
 
   # name of the host to run this on.
   hosts: discovery_backend
@@ -26,5 +26,31 @@
     ansible_become: true
 
   roles:
-    # Only one role: Docker
+    # Only one role
   - setup_discovery
+
+- name: setup swarm managers
+  hosts: swarm_managers
+  vars:
+
+    # execute all commands as root
+    ansible_become_user: root
+    ansible_become_method: sudo
+    ansible_become: true
+
+  roles:
+    # Only one role
+  - setup_manager
+
+- name: setup swarm workers
+  hosts: swarm_workers
+  vars:
+
+    # execute all commands as root
+    ansible_become_user: root
+    ansible_become_method: sudo
+    ansible_become: true
+
+  roles:
+    # Only one role
+  - setup_worker

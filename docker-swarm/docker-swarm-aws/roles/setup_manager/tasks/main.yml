@@ -1,0 +1,9 @@
+---
+- name: delete previous containers if any
+  shell: ./remove.sh swarmmanager >> remove.log
+  args:
+    chdir: /vagrant/
+    executable: /bin/bash
+
+- name: create the swarm manager
+  command: docker run -d --name=swarmmanager -p 4000:4000 swarm manage -H :4000 --replication --advertise <manager0_ip>:4000 consul://<consul0_ip>:8500

@@ -3,8 +3,8 @@
 # delete any previous containers called "consul"
 # This wont work with the command module because we use pipe.
 
-- name: delete previous containers if any
-  shell: ./remove.sh >> remove.log
+- name: delete previous consul containers if any
+  shell: ./remove.sh consul >> remove.log
   args:
     chdir: /vagrant/
     executable: /bin/bash
