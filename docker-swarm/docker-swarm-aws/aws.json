@@ -3,6 +3,15 @@
     "availability_zone": "a",
     "ssh_username": "ec2-user",
     "ec2s": {
+        "consul0": {
+            "ami_id": "ami-ffbdd790",
+            "instance_type": "t2.micro",
+            "tags": {
+                "Name": "consul0",
+                "Role": "discovery",
+                "ServiceType": "discovery"
+            }
+        },
         "manager0": {
             "ami_id": "ami-ffbdd790",
             "instance_type": "t2.micro",
@@ -30,7 +39,6 @@
                 "ServiceType": "node"
             }
         },
-
         "node1": {
             "ami_id": "ami-ffbdd790",
             "instance_type": "t2.micro",
@@ -39,17 +47,6 @@
                 "Role": "node",
                 "ServiceType": "node"
             }
-        },
-
-        "consul0": {
-            "ami_id": "ami-ffbdd790",
-            "instance_type": "t2.micro",
-            "tags": {
-                "Name": "consul0",
-                "Role": "discovery",
-                "ServiceType": "discovery"
-            }
         }
-
     }
 }
