@@ -9,7 +9,7 @@
 - name: setup docker on all nodes
 
   # name of the host to run this on.
-  hosts: swarm_nodes, discovery_backend
+  hosts: all
   vars:
 
     # execute all commands as root
