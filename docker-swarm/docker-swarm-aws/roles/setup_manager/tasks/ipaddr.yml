@@ -1,0 +1,8 @@
+---
+- name: get consul0 ip address
+  command: echo "{{ hostvars['consul0']['ansible_eth0']['ipv4']['address'] }}"
+  register: consul0_ip_address
+
+- name: get manager ip address
+  command: echo "{{ hostvars[inventory_hostname]['ansible_eth0']['ipv4']['address'] }}"
+  register: my_ip_address
