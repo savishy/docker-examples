@@ -1,0 +1,13 @@
+---
+- name: setup swarm workers
+  hosts: workers
+  vars:
+
+    # execute all commands as root
+    ansible_become_user: root
+    ansible_become_method: sudo
+    ansible_become: true
+
+  roles:
+    # Only one role
+  - setup_worker

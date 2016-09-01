@@ -64,18 +64,13 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision "ansible" do |ansible|
     ansible.groups = {
-      "swarm_nodes" => ["manager0", "manager1", "node0", "node1"],
-      "discovery_backend" => ["consul0"],
-      "swarm_managers" => ["manager0","manager1"],
-      "swarm_workers" => ["node0","node1"]
+      "docker" => ["manager0", "manager1", "node0", "node1", "consul0"],
+      "discovery" => ["consul0"],
+      "managers" => ["manager0","manager1"],
+      "workers" => ["node0","node1"]
     }
     ansible.verbose = "vvvv"
-
-    # Docker daemon setup requires knowing ip addr of one host from another host.
-    # For doing that you need this.
-    # http://stackoverflow.com/a/32258649/682912
-    ansible.limit = "all"
-    ansible.playbook = "playbook.yml"
+    ansible.playbook = "provisioning/playbook.yml"
   end
 
   

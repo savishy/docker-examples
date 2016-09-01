@@ -1,0 +1,17 @@
+---
+# If you want one host to access info about another host,
+# 1. fact caching should be turned on in ansible.cfg
+# http://stackoverflow.com/a/32717107/682912
+# 2. have the below line as your first task, that runs the "setup" task to gather
+# facts.
+# http://stackoverflow.com/a/31059230/682912
+
+- hosts: all
+  name: gather facts
+  tasks:
+   - setup:
+
+- include: docker.yml
+- include: discovery.yml
+- include: managers.yml
+- include: workers.yml

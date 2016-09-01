@@ -1,1 +1,2 @@
-vagrant up --provider=aws --parallel
+vagrant destroy -f
+vagrant up --provider=aws

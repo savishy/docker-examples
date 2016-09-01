@@ -1,0 +1,16 @@
+---
+- include: ipaddr.yml
+
+- name: delete previous containers if any
+  shell: ./remove.sh swarmworker >> remove.log
+  args:
+    chdir: /vagrant/
+    executable: /bin/bash
+
+- name: create the swarm worker
+  docker_container:
+    name: swarmworker
+    detach: yes
+    image: swarm
+    command: [ "join", "--advertise={{ my_ip_address.stdout }}:2375", "consul://{{ consul0_ip_address.stdout }}:8500" ]
+  # docker run -d --name swarmworker swarm  join --advertise={{ my_ip_address.stdout }}:2375 consul://{{ consul0_ip_address.stdout }}:8500

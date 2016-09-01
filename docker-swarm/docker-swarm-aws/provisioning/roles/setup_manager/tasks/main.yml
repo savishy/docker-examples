@@ -1,0 +1,27 @@
+---
+# refresh facts, so that set_fact commands can be discovered
+# https://groups.google.com/forum/#!topic/ansible-project/dhQBQHb48gE
+- action: setup
+- include: ipaddr.yml
+
+- debug: var=consul0_ip_address
+
+- name: delete previous containers if any
+  shell: ./remove.sh swarmmanager >> remove.log
+  args:
+    chdir: /vagrant/
+    executable: /bin/bash
+
+- name: create the primary swarm manager
+  docker_container:
+    name: swarmmanager
+    image: swarm
+    state: started
+    restart_policy: on-failure
+    restart_retries: 3
+    command: ["manage", "-H", ":4000", "--replication", "--advertise", "{{ my_ip_address.stdout }}:4000", "consul://{{ consul0_ip_address.stdout }}:8500" ]
+    ports:
+      - "4000:4000"
+    detach: yes
+
+      # command: docker run -d --name=swarmmanager -p 4000:4000 swarm manage -H :4000 --replication --advertise {{ my_ip_address.stdout }}:4000 consul://{{ consul0_ip_address.stdout }}:8500
