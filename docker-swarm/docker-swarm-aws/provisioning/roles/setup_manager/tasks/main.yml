@@ -22,6 +22,8 @@
     command: ["manage", "-H", ":4000", "--replication", "--advertise", "{{ my_ip_address.stdout }}:4000", "consul://{{ consul0_ip_address.stdout }}:8500" ]
     ports:
       - "4000:4000"
+    exposed:
+      - 4000
     detach: yes
 
       # command: docker run -d --name=swarmmanager -p 4000:4000 swarm manage -H :4000 --replication --advertise {{ my_ip_address.stdout }}:4000 consul://{{ consul0_ip_address.stdout }}:8500
