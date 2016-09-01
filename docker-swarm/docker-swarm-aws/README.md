@@ -2,7 +2,12 @@
 
 This is an example of using Docker to provision a swarm in AWS.
 
-1. Vagrant is used to provision each node in the swarm. 
+1. Vagrant is used to provision each node in the swarm.
+   The node info is read from a JSON `aws.json`.
+1. Vagrant runs an ansible playbook to setup Docker Swarm
+
+
+## How to use
 
 ### Prerequisites ###
 
@@ -19,3 +24,7 @@ security_groups = ENV['AWS_SECURITYGROUP'] # Security group that you want your
 # instances to belong to 
 private_key_path = ENV['AWS_KEYPATH'] # path to a keypair PEM file.
 ```
+
+### Run
+
+Run `./vagrantup.sh`.
