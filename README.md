@@ -1,6 +1,8 @@
 # docker-examples
 A repository of simple Docker examples.
 
+Videos accompanying this code repo can be found in [this YouTube playlist](https://www.youtube.com/playlist?list=PL5f2nDQavqSKSqrptqolPZTxa9LGsRzG9).
+
 ## Prerequisites
 
 Any machine with a working docker installation.
