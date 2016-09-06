@@ -1,0 +1,5 @@
+---
+- name: setup docker on all hosts
+  hosts: docker
+  roles:
+    - { role: ansible-roles/install-docker, docker_user: vagrant }

@@ -1,0 +1,3 @@
+---
+- include: all.yml
+- include: docker.yml
