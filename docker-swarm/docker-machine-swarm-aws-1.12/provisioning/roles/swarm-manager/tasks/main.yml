@@ -1,0 +1,21 @@
+---
+- name: remove existing swarms
+  command: >-
+    docker swarm leave --force
+  ignore_errors: yes
+
+- name: create swarm manager
+  command: >
+    docker swarm init --advertise-addr {{ hostvars['manager0']['ansible_eth0']['ipv4']['address'] }}
+  register: swarmmanager_output
+
+- name: get join-token for worker
+  command: >
+    docker swarm join-token -q worker
+  register: worker_token
+
+- name: print swarm status
+  command: >
+    docker node ls
+
+- debug: var=worker_token

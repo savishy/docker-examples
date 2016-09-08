@@ -1,0 +1,8 @@
+---
+- name: create swarm worker
+  command: >-
+    docker swarm join --token {{worker_token}} {{ hostvars['manager0']['ansible_eth0']['ipv4']['address'] }}:2377
+
+- name: print swarm status
+  command: >
+    docker node ls

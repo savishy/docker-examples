@@ -1,0 +1,7 @@
+---
+- name: setup tasks
+  hosts: all
+  tasks:
+  - name: Enable passwordless sudo
+    lineinfile: dest=/etc/sudoers regexp=^vagrant line="vagrant ALL=(ALL) NOPASSWD:ALL"
+  become: true

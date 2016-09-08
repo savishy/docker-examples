@@ -1,8 +1,0 @@
----
-- name: ec2 rules
-  hosts: all
-  vars:
-    become_user: root
-    become_method: sudo
-  roles:
-    - { role: ansible-roles/ec2-modify-rules }

@@ -1,5 +1,3 @@
-# ENV['PYTHONPATH']="/home/vish/.local/lib/python2.7/site-packages"
-puts ENV['PYTHONPATH']
 # read env vars and store them
 keypair_name = ENV['AWS_KEYPAIR_NAME']
 access_key_id = ENV['AWS_ACCESS_KEY']
@@ -10,7 +8,7 @@ private_key_path = ENV['AWS_KEYPATH']
 Vagrant.configure(2) do |config|
   config.vm.box = "lattice/ubuntu-trusty-64"
   # setup each machine.
-  ["manager0"].each do |node|
+  ["manager0","node0","node1"].each do |node|
     config.vm.define node do |config2|
 
       # custom config block for AWS provider.
@@ -33,15 +31,18 @@ Vagrant.configure(2) do |config|
   end
 
   # provisioning
+  config.vm.provision :docker
   config.vm.provision :ansible do |ansible|
     # autodownload dependent roles
     ansible.galaxy_role_file = "./provisioning/requirements.yml"
     ansible.galaxy_roles_path = "./provisioning"
     ansible.groups = {
-      "docker" => ["manager0"]
+      "docker" => ["manager0","node0","node1"],
+      "manager" => ["manager0"],
+      "worker" => ["node0","node1"]
     }
     ansible.verbose = "vvvv"
     ansible.playbook = "provisioning/playbook.yml"
   end
-  
+
 end

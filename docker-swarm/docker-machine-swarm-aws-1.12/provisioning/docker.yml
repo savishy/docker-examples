@@ -3,3 +3,12 @@
   hosts: docker
   roles:
     - { role: ansible-roles/install-docker, docker_user: vagrant }
+- name: setup swarm managers
+  hosts: manager
+  roles:
+    - { role: swarm-manager }
+
+- name: setup swarm workers
+  hosts: worker
+  roles:
+    - { role: swarm-worker }
