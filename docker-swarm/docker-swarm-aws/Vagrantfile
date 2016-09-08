@@ -63,6 +63,10 @@ Vagrant.configure(2) do |config|
   end # aws_cfg['ec2s']
 
   config.vm.provision "ansible" do |ansible|
+    # autodownload dependent roles
+    ansible.galaxy_role_file = "./provisioning/requirements.yml"
+    ansible.galaxy_roles_path = "./provisioning"
+    
     ansible.groups = {
       "docker" => ["manager0", "manager1", "node0", "node1", "consul0"],
       "discovery" => ["consul0"],
