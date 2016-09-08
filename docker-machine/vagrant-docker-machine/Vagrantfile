@@ -1,16 +1,25 @@
 Vagrant.configure("2") do |config|
-    
-  config.vm.provider :virtualbox do |v|
-    v.name = "vagrant-docker-machine"
+
+  # configure ip address via dhcp
+  # we need to specify some ip address that is not
+  # 127.0.0.1. (127.0.0.1 can conflict with any existing
+  # docker daemons you have on your host machine).
+  
+  config.vm.network "private_network", type: "dhcp"
+  
+  # empty block whose only job is to
+  # specify the machine name in "vagrant status".
+  config.vm.define "vagrant-docker-machine" do |config2|
   end
 
-  # ubuntu box
+  # use an ubuntu box
   config.vm.box = "lattice/ubuntu-trusty-64"
 
-  # boot2docker box
+  # use a vagrant boot2docker box (NOT TESTED
   #config.vm.box = "mitchellh/boot2docker"
   #config.vm.box_url = "https://github.com/mitchellh/boot2docker-vagrant-box/releases/download/v1.2.0/boot2docker_virtualbox.box"
-  
-  config.vm.provision :docker do |d|
-  end
+
+  # provision with docker
+  config.vm.provision :docker
+
 end
