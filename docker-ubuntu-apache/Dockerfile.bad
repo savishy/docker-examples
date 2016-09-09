@@ -1,8 +1,5 @@
-FROM httpd
+FROM ubuntu:16.04
 RUN apt-get -y update && apt-get -y install wget apache2
+# this line of code below is the WRONG way to start the apache2 service.
 RUN service apache2 start
 RUN apt-get install -y mysql-server php5 php5-mysql phpmyadmin
-
-
-
-
