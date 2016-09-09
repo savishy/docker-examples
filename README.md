@@ -25,6 +25,6 @@ Here we will build an Apache Web Server using Ubuntu + Apache.
 #### Beginner: docker-ubuntu-supervisor
 This example shows how to build the same Apache webserver using `supervisor`. Additionally we will launch an SSH server (so that you can ssh to this webserver).
 
-#### Beginner: docker-jenkins
+#### Intermediate: [docker-jenkins](https://github.com/savishy/docker-examples/tree/master/docker-jenkins)
 
-This example Dockerizes Jenkins.
+This example creates a Jenkins Docker container and demonstrates several core concepts.
