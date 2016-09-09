@@ -37,7 +37,7 @@ This example creates a Jenkins Docker container and demonstrates several core co
 #### Intermediate: [docker-compose](https://github.com/savishy/docker-examples/tree/master/docker-compose)
 This folder contains examples on Docker Compose.
 
-### Intermediate: [docker-efkstack](https://github.com/savishy/docker-examples/tree/master/docker-efkstack)
+#### Intermediate: [docker-efkstack](https://github.com/savishy/docker-examples/tree/master/docker-efkstack)
 This example creates an EFK stack (Elastic,Fluentd,Kibana) using Docker Compose.
 
 #### Advanced: [docker-machine](https://github.com/savishy/docker-examples/tree/master/docker-machine)
