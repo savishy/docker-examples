@@ -19,7 +19,6 @@ services:
     ports:
       - "24224:24224"
     volumes:
-      - /data:/fluentd/log
-      - ./fluentd:/fluentd/etc/
+      - /tmp:/fluentd/log
     environment:
       - FLUENTD_CONF=fluent.conf
