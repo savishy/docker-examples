@@ -1,7 +1,7 @@
 version: '2'
 services:
   kibana:
-    image: kibana
+    image: kibana:4.6
     ports:
       - "5601:5601"
     links:
@@ -9,16 +9,12 @@ services:
     depends_on:
       - elasticsearch
   elasticsearch:
-    image: elasticsearch
+    image: elasticsearch:2.4
     ports:
       - "9200:9200"
     depends_on:
       - fluentd
   fluentd:
-    image: fluent/fluentd
+    build: fluentd/
     ports:
       - "24224:24224"
-    volumes:
-      - /tmp:/fluentd/log
-    environment:
-      - FLUENTD_CONF=fluent.conf
