@@ -1,0 +1,14 @@
+# docker compose file for ultra-esb application stack.
+version: '2'
+services:
+  uesb1:
+    build: ./uesb1
+    environment:
+      ULTRA_HOME: "/opt/ultraesb-2.3.0-min"
+    volumes:
+      # logs
+      - ./uesb1/var/ultraesb/:/var/ultraesb
+      # config
+      - ./uesb1/conf:/opt/ultraesb-2.3.0-min/conf
+    entrypoint:
+      "/opt/ultraesb-2.3.0-min/bin/ultraesb-daemon.sh console"
