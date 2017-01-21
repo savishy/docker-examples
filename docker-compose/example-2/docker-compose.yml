@@ -1,0 +1,8 @@
+version: '2'
+services:
+  service1:
+    build: "service2"
+    depends_on:
+      - service2
+  service2:
+    build: "service2"
