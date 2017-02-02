@@ -1,4 +1,4 @@
-FROM jenkins:2.19.1
+FROM jenkins:2.32.2
 
 # Jenkins Port
 # TODO jenkins security needs to be set with HTTPS, using JENKINS_OPTS
