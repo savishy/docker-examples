@@ -4,7 +4,7 @@ This is a simple script to demonstrate the Docker Machine Example in the
 The script
 
 * deletes existing docker machines
-* creates a docker machine
+* creates a docker machine using the Virtualbox driver.
 * connects to it
 * pulls `nginx` image and runs a web server
 * extracts the docker machine's IP address
