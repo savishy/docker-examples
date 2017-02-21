@@ -18,6 +18,8 @@ RUN cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys
 RUN chmod 600 /root/.ssh/id_rsa
 RUN chmod 600 /root/.ssh/authorized_keys
 
+RUN yum -y install tar wget unzip which
+
 # Standard SSH port
 EXPOSE 22
 
