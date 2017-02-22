@@ -1,6 +1,11 @@
 *This is a work in progress.*
 This is a Centos 6 based Docker container that you can SSH into.
 
+## About
+
+This effort started because I needed a Docker container mimicking CentOS
+systems, to develop Ansible playbooks on.
+
 ## How to run
 
 Execute the `create.sh` script. This does the following
