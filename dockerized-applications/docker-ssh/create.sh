@@ -1,6 +1,13 @@
 #!/bin/bash
 set -e
 # do not prompt http://stackoverflow.com/a/15890748/682912
+
+echo "-- cleaning up past containers"
+prevContainers=`docker ps -aq -f "ancestor=docker-ssh"`
+if [[ ! "$prevContainers" == "" ]]; then
+  echo $prevContainers | xargs docker rm -f
+fi
+
 echo "-- creating an SSH key without passphrase (NOT FOR PRODUCTION)"
 if [ ! -e ~/.ssh/ansible_id_rsa ]; then
   ssh-keygen -b 2048 -t rsa -f ~/.ssh/ansible_id_rsa -q -N ""
