@@ -1,18 +1,26 @@
 #!/bin/bash
 set -e
 
-# driver. change to amazonec2 to create this in cloud.
-DRIVER="virtualbox"
+# default driver. specify parameter amazonec2 to create this in cloud.
+
+if [[ "$#" == 0 ]]; then
+  DRIVER="virtualbox"
+else
+  DRIVER=$1
+fi
 
 # common amazon ec2 options
 if [[ "$DRIVER" == "amazonec2" ]]; then
-    COMMON_OPTS=" --amazonec2-region ap-southeast-1 --amazonec2-zone a --amazonec2-vpc-id vpc-6a28970f \
---amazonec2-security-group vish_agility_aws "
-else
+    COMMON_OPTS=" --amazonec2-region $AWS_DEFAULT_REGION --amazonec2-zone a --amazonec2-vpc-id vpc-6a28970f \
+--amazonec2-security-group $AWS_SECURITYGROUP "
+elif [[ "$DRIVER" == "virtualbox" ]]; then
     COMMON_OPTS=""
+else
+  echo "unsupported driver: $DRIVER" && exit 1
 fi
 
-# remove previous machines. 
+echo "---- using driver $DRIVER"
+# remove previous machines.
 docker-machine rm -f manager0
 docker-machine rm -f worker0
 docker-machine rm -f worker1
