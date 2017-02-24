@@ -1,4 +1,6 @@
-This is a demonstration of Docker Swarm Mode, a new feature in Docker 1.12+.
+This is a demonstration on how to provision a Docker Swarm (1.12+) with Vagrant and Ansible in a hands-off fashion.
+
+This example uses Docker Swarm Mode, a new feature in Docker 1.12+.
 
 ## Prerequisites
 
