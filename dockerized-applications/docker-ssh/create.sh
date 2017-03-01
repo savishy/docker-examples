@@ -5,14 +5,48 @@ CONTAINER_NAME=docker-ssh-container
 IMG_NAME=docker-ssh
 KEY_NAME=ansible_id_rsa
 KEY_PATH="~/.ssh/$KEY_NAME"
+
+usage() {
+  echo "
+  This script creates a Docker container with ability to SSH into it.
+  ** Note ** when running for the first time, use the -r flag (see below).
+  Usage: $0 [OPTS]
+
+  OPTS:
+  -h | -?: print this usage and exit.
+
+  -r: During the first run of this script, use this flag. This generates SSH keys.
+
+  -p: Specify a list of ports to forward from host into the container. Format is
+      -p P1:P1,P2:P2,....
+
+  "
+}
+####
+# Parse commandline args
+####
+while getopts "h?rp:" opt; do
+    case "$opt" in
+    h|\?)
+        usage
+        exit 0
+        ;;
+    r)  regenssh=1
+        ;;
+    p)  port_list=$OPTARG
+        ;;
+    esac
+done
+
 echo "-- cleaning up past containers"
 prevContainers=`docker ps -aq -f "ancestor=$IMG_NAME"`
 if [[ ! "$prevContainers" == "" ]]; then
   echo $prevContainers | xargs docker rm -f
 fi
 
-if [[ "$1" == "true" ]]; then
-  echo "-- creating SSH key $KEY_PATH  (Warning: this step may fail during repeated runs -- WIP)"
+if [[ $regenssh ]]; then
+  echo "-- creating SSH key $KEY_PATH"
+  echo "** Warning **: this step may fail during repeated runs -- WIP"
   if [ ! -e $KEY_PATH ]; then
     ssh-keygen -b 2048 -t rsa -f $KEY_PATH -q -N ""
   else
@@ -29,8 +63,15 @@ fi
 echo "-- creating Docker Image"
 docker build -t $IMG_NAME .
 
+IFS=',' read -ra PORTS <<< "$port_list"
+portForwards="-p 2200:22"
+for i in "${PORTS[@]}"; do
+    portForwards="$portForwards -p $i "
+done
+
+echo "-- Ports to Forward: $portForwards"
 echo "-- running Docker container"
-docker run -d -p 2200:22 --name $CONTAINER_NAME $IMG_NAME
+docker run -d $portForwards --name $CONTAINER_NAME $IMG_NAME
 CONTAINER_ID=`docker ps -aq -f "name=$CONTAINER_NAME"`
 ipAddr=`docker inspect -f {{.NetworkSettings.IPAddress}} $CONTAINER_NAME`
 echo "-- container IP: $ipAddr"
