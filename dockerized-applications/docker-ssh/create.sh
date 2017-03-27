@@ -71,7 +71,9 @@ done
 
 echo "-- Ports to Forward: $portForwards"
 echo "-- running Docker container"
-docker run -d $portForwards --name $CONTAINER_NAME $IMG_NAME
+set -x
+docker run -m "2048m" --memory-swap "4096m" -d $portForwards --name $CONTAINER_NAME $IMG_NAME
+set +x
 CONTAINER_ID=`docker ps -aq -f "name=$CONTAINER_NAME"`
 ipAddr=`docker inspect -f {{.NetworkSettings.IPAddress}} $CONTAINER_NAME`
 echo "-- container IP: $ipAddr"
