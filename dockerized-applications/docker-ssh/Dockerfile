@@ -1,7 +1,7 @@
 FROM centos:6
 #Installing and Enabling ssh
 
-RUN yum -y install openssh-server openssh-clients
+RUN yum -y install openssh-server openssh-clients sudo
 
 # for some reason these steps seem necessary to enable connection
 # To go through.
