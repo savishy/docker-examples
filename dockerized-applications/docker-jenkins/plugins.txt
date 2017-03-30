@@ -3,7 +3,7 @@ javadoc:1.4
 
 # deps for credentials
 
-icon-shim:2.0.2
+icon-shim:2.0.3
 credentials:1.22
 workflow-step-api:1.14.2
 maven-plugin:2.7.1
@@ -35,3 +35,6 @@ docker-build-step:1.35
 
 # copy-artifact
 copyartifact:1.38.1
+
+# matrix authorization strategy
+matrix-auth:1.4
