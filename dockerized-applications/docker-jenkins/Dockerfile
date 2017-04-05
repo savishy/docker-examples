@@ -2,7 +2,10 @@ FROM jenkins:2.32.2
 
 # Jenkins Port
 # TODO jenkins security needs to be set with HTTPS, using JENKINS_OPTS
-ENV JENKINS_OPTS --httpPort=8081
+
+# fix for keepalive timeout issue that causes trouble running CLI commands
+# https://issues.jenkins-ci.org/browse/JENKINS-38623
+ENV JENKINS_OPTS --httpPort=8081 --httpKeepAliveTimeout=120000
 
 # choose jenkins home
 ENV JENKINS_HOME /var/lib/jenkins
