@@ -21,6 +21,7 @@ fi
 
 echo "---- using driver $DRIVER"
 # remove previous machines.
+echo "---- removing any previous docker-machines"
 docker-machine rm -f manager0
 docker-machine rm -f worker0
 docker-machine rm -f worker1
