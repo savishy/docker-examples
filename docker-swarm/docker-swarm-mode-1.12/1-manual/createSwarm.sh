@@ -1,15 +1,20 @@
 #!/bin/bash
 set -e
 
-# default driver. specify parameter amazonec2 to create this in cloud.
+log() {
+  GREEN='\033[0;32m'
+  NC='\033[0m' # No Color
+  printf "${GREEN}--- $1${NC}\n"
+}
 
-echo "--------------------------------"
-echo "SWARM CREATION SCRIPT"
-echo "(to be run from Cygwin or Docker Quickstart Terminal)"
-echo "Usage:"
-echo "$0 :  create docker swarm using virtualbox VMs"
-echo "$0 amazonec2: create swarm in Amazon AWS"
-echo "-------------------------------"
+
+log "--------------------------------"
+log "SWARM CREATION SCRIPT"
+log "(to be run from Cygwin or Docker Quickstart Terminal)"
+log "Usage:"
+log "$0 :  create docker swarm using virtualbox VMs"
+log "$0 amazonec2: create swarm in Amazon AWS"
+log "-------------------------------"
 
 if [[ "$#" == 0 ]]; then
   DRIVER="virtualbox"
