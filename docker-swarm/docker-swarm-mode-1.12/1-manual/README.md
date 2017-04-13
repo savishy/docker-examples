@@ -78,6 +78,12 @@ Afterward, hit one of the Swarm IP addresses repeatedly (e.g. `curl http://192.1
 
 ## Troubleshooting
 
+### AWS: What ports need to be opened in my security group? 
+
+[reference.](https://docs.docker.com/engine/swarm/swarm-tutorial/#open-protocols-and-ports-between-the-hosts)
+
+![image](https://cloud.githubusercontent.com/assets/13379978/24997496/7a404dea-2054-11e7-9510-abdff4ffeda9.png)
+
 ### Issue creating Docker Swarm (AWS) behind some corporate networks
 
 Some corporate networks tend to block either AWS, or non-standard ports like 2376. In such cases, you might face an issue similar to:
