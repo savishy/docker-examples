@@ -3,16 +3,52 @@ set -e
 
 # default driver. specify parameter amazonec2 to create this in cloud.
 
+echo "--------------------------------"
+echo "SWARM CREATION SCRIPT"
+echo "(to be run from Cygwin or Docker Quickstart Terminal)"
+echo "Usage:"
+echo "$0 :  create docker swarm using virtualbox VMs"
+echo "$0 amazonec2: create swarm in Amazon AWS"
+echo "-------------------------------"
+
 if [[ "$#" == 0 ]]; then
   DRIVER="virtualbox"
 else
   DRIVER=$1
 fi
 
+doAWSChecks() {
+  echo "-- initial checks..."
+  errors=false
+  for var in  AWS_ACCESS_KEY \
+              AWS_SECRET_KEY \
+              AWS_VPC_ID \
+              AWS_DEFAULT_REGION \
+              AWS_KEYPAIR_NAME \
+              AWS_SSH_KEYPATH \
+              AWS_DEFAULT_ZONE \
+              AWS_SECURITYGROUP; do
+    if [[ "${!var}" == "" ]]; then
+      echo "ERROR: $var is not set! Did you set the variable in setenv.sh?"
+      errors=true
+    fi
+  done
+  if $errors; then
+    echo "Please fix the above errors and try again" \
+    && exit 1
+  fi
+}
+
 # common amazon ec2 options
 if [[ "$DRIVER" == "amazonec2" ]]; then
-    COMMON_OPTS=" --amazonec2-region $AWS_DEFAULT_REGION --amazonec2-zone a --amazonec2-vpc-id vpc-6a28970f \
---amazonec2-security-group $AWS_SECURITYGROUP "
+    . setenv.sh
+    doAWSChecks
+    COMMON_OPTS=" --amazonec2-region $AWS_DEFAULT_REGION \
+                  --amazonec2-zone $AWS_DEFAULT_ZONE \
+                  --amazonec2-vpc-id $AWS_VPC_ID \
+                  --amazonec2-keypair-name $AWS_KEYPAIR_NAME \
+                  --amazonec2-ssh-keypath $AWS_SSH_KEYPATH \
+                  --amazonec2-security-group $AWS_SECURITYGROUP "
 elif [[ "$DRIVER" == "virtualbox" ]]; then
     COMMON_OPTS=""
 else
