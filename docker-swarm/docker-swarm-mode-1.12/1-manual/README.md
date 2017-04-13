@@ -2,12 +2,15 @@ This simple shell script demonstrates a *manual* way to provision a Docker Swarm
 
 ## Prerequisites
 
-* *Docker 1.12+ is needed to make this example work*, as this example uses the [Docker Swarm Mode feature.](https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm/)
+* *Docker 1.12+ is needed*, as this example uses the [Docker Swarm Mode feature.](https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm/)
 
 * This is a `.sh` script, which means on Windows, you can only execute this within the *Docker Quickstart Terminal.*
 
 **If provisioning AWS Docker-Machines:**
-Create a script `setenv.sh` *in the same directory as `createSwarm.sh`*.
+
+You will need an AWS Account. 
+
+Create a script `setenv.sh` *in the same directory as `createSwarm.sh`*. (This script is absent by default). 
 
 The script needs to have the following content:
 
@@ -39,17 +42,14 @@ export AWS_SSH_KEYPATH=
 
 ## Step 1. Create a Swarm
 
-### In Virtualbox
+**Virtualbox**
 
-Execute `./createSwarm.sh` without any arguments. By default the Swarm is created using the `virtualbox` driver.
+Execute `./createSwarm.sh`.
 
-### In AWS
+**AWS**
 
-Execute `./run.sh` with argument **`amazonec2`**. This creates the swarm in Amazon EC2.
+Execute `./create.sh amazonec2`.
 
-```
-./run.sh amazonec2
-```
 ## Step 2. Deploy a Service to Swarm
 
 ### 2a. Petclinic
