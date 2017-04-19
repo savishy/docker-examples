@@ -2,16 +2,19 @@ This simple shell script demonstrates a *manual* way to provision a Docker Swarm
 
 ## Prerequisites
 
-* *Docker 1.12+ is needed to make this example work*, as this example uses the [Docker Swarm Mode feature.](https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm/)
+* *Docker 1.12+ is needed*, as this example uses the [Docker Swarm Mode feature.](https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm/)
 
 * This is a `.sh` script, which means on Windows, you can only execute this within the *Docker Quickstart Terminal.*
 
 **If provisioning AWS Docker-Machines:**
-Create a script `setenv.sh` *in the same directory as `createSwarm.sh`*.
+
+You will need an AWS Account. 
+
+Create a script `setenv.sh` *in the same directory as `createSwarm.sh`*. (This script is absent by default). 
 
 The script needs to have the following content:
 
-```
+```bash
 # aws access key and secret key
 export AWS_ACCESS_KEY=
 export AWS_SECRET_KEY=
@@ -39,17 +42,14 @@ export AWS_SSH_KEYPATH=
 
 ## Step 1. Create a Swarm
 
-### In Virtualbox
+**Virtualbox**
 
-Execute `./createSwarm.sh` without any arguments. By default the Swarm is created using the `virtualbox` driver.
+Execute `./createSwarm.sh`.
 
-### In AWS
+**AWS**
 
-Execute `./run.sh` with argument **`amazonec2`**. This creates the swarm in Amazon EC2.
+Execute `./create.sh amazonec2`.
 
-```
-./run.sh amazonec2
-```
 ## Step 2. Deploy a Service to Swarm
 
 ### 2a. Petclinic
@@ -75,3 +75,19 @@ This does the following
 1. Deploys a node webapp and a redis db service.
 
 Afterward, hit one of the Swarm IP addresses repeatedly (e.g. `curl http://192.168.99.101`). You will see that the request goes in a round-robin fashion to each of the containers running the service.
+
+## Troubleshooting
+
+### AWS: What ports need to be opened in my security group? 
+
+[reference.](https://docs.docker.com/engine/swarm/swarm-tutorial/#open-protocols-and-ports-between-the-hosts)
+
+![image](https://cloud.githubusercontent.com/assets/13379978/24997496/7a404dea-2054-11e7-9510-abdff4ffeda9.png)
+
+### Issue creating Docker Swarm (AWS) behind some corporate networks
+
+Some corporate networks tend to block either AWS, or non-standard ports like 2376. In such cases, you might face an issue similar to:
+
+![image](https://cloud.githubusercontent.com/assets/13379978/24996265/dc6d696c-204f-11e7-9f3b-0dc59f0bb32d.png)
+
+**TODO**: Need to find a workaround for this. 
