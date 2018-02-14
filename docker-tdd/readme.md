@@ -34,6 +34,11 @@ Bundle complete! 1 Gemfile dependency, 15 gems now installed.
 Use `bundle show [gemname]` to see where a bundled gem is installed.
 ```
 
+## Walkthrough (How it was done)
+
+1. First create the stub files `Gemfile`, `spec/Dockerfile_spec.rb`. ( ()[https://github.com/savishy/docker-examples/tree/e52dbb25f19399525918ca150f11462a34936d92/docker-tdd](e52dbb) ) 
+
+
 ## References
 
 1. [Serverspec](http://serverspec.org/)
