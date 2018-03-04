@@ -16,9 +16,8 @@ describe "Dockerfile" do
       expect(@image.json["Config"]["Labels"].has_key?("author"))
     end
 
-    it "should be based on tomcat" do
-      pending("not yet implemented")
-      raise "todo"
+    it "should be based on alpine" do
+      expect(os_version).to include("alpine")
     end
 
     it "should have /app directory" do

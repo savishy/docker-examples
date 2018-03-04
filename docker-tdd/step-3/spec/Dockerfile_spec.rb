@@ -19,6 +19,11 @@ describe "Dockerfile" do
         set :docker_image, @image.id
     end
 
+    def os_release
+        command("cat /etc/os-release").stdout
+    end
+
+
     # We have created stub tests based on our specs.
     # For now we are marking these tests pending.
 
@@ -28,8 +33,7 @@ describe "Dockerfile" do
     end
   
     it "should have alpine OS" do
-        pending("not yet implemented")
-        raise "todo"
+        expect(os_release).to contain("alpine").and contain("3.7.0")
     end
 
     it "should have jdk 8" do
