@@ -1,42 +1,36 @@
-## How to run
+## TDD and Docker with Serverspec
+
+TDD is a software-development concept. Here we are demonstrating how *some aspects* of TDD can be adapted for use in Dockerfile development. 
+
+* This example demonstrates using some aspects of Test-Driven Development to develop an example Dockerfile.
+* Each subdirectory here will give you a step-by-step understanding of *how our Dockerized application evolves*.
+
+## How To Use
 
 ### Prerequisites
 
-* Ruby 
-* Bundler
+1. A Linux system with the ability to run Ruby, Gems and Bundler is required.
+1. A basic knowledge of Ruby, Rubygems, Gemfiles and Bundler is advised.
+1. Understanding of the Docker API for Ruby is advised.
 
-### Execute `bundle install`
+### Step 1. Create the stubs.
 
-Example output:
+First we create the stub files and folders necessary.
 
-```
-vish@freeman:docker-examples/docker-tdd$ bundle install
+See [step-1](step-1/) directory for details.
 
-Fetching gem metadata from https://rubygems.org/............
-Fetching version metadata from https://rubygems.org/..
-Resolving dependencies...
-Installing diff-lcs 1.3
-Installing multi_json 1.13.1
-Installing net-ssh 4.2.0
-Using net-telnet 0.1.1
-Installing rspec-support 3.7.1
-Installing sfl 2.3
-Using bundler 1.13.0
-Installing net-scp 1.2.1
-Installing rspec-core 3.7.1
-Installing rspec-expectations 3.7.0
-Installing rspec-mocks 3.7.0
-Installing specinfra 2.73.2
-Installing rspec-its 1.2.0
-Installing rspec 3.7.0
-Installing serverspec 2.41.3
-Bundle complete! 1 Gemfile dependency, 15 gems now installed.
-Use `bundle show [gemname]` to see where a bundled gem is installed.
-```
+### Step 2. Write the specs.
 
-### Execute `bundle exec rspec`
+* Next, we flesh out the specs (or "behavior" if you will) of our Docker image.
+* At this stage, we do not have any content in our `Dockerfile` as yet. 
+* We _do_, however, have a set of specs for the `Dockerfile` that when executed, fail. 
+* See [step-2](step-2/) directory for detail.
 
+### Step 3. Create the Dockerfile.
 
+* Next we flesh out our Dockerfile so as to fulfil the specs.
+* After incrementally filling out our `Dockerfile` we execute the spec each time.
+* See [step-3](step-3/) directory.
 
 ## Walkthrough (How it was done)
 
