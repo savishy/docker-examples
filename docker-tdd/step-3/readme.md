@@ -1,14 +1,14 @@
-# Step 2. Failing Tests
-
-## 2a. Define the Spec
-
-* Now we spec out our Docker container. 
-* The spec files follow syntax defined by ServerSpec and RSpec. So keep the following docs handy 
-* [The ServerSpec documentation](http://serverspec.org/resource_types.html) on resource-types
-* [RSpec Documentation]
+# Step 3. Start Implementing The Dockerfile and Make Tests Pass
 
 
-## 2b. Execute the tests
+## 3a. Write a line in your `Dockerfile`
+
+* As defined in our tests, we need an Alpine-based image containing OpenJDK, i.e [`openjdk:8-alpine`](https://hub.docker.com/_/openjdk/).
+
+![docker-tdd-from-openjdk](https://user-images.githubusercontent.com/13379978/36944982-8d7a131e-1fcc-11e8-8d0e-efadf2131a23.gif)
+
+
+## 3b. Execute the Tests - all tests are now `pending`
 
 Execute
 
@@ -16,12 +16,57 @@ Execute
 bundle exec rspec
 ```
 
-The failure will be similar to the GIF Below - it will likely complain about an empty `Dockerfile`.
+The output will indicate that the tests are now `pending` (yellow color). This is because none of our test logic is implemented yet.
 
-![docker-tdd-2](https://user-images.githubusercontent.com/13379978/36943176-2cb50524-1faa-11e8-9fbd-85e267db989d.gif)
+![image](https://user-images.githubusercontent.com/13379978/36944189-15dbea80-1fbd-11e8-9420-d506dbdfbb81.png)
 
 
-In the next Step 3, we will flesh out our `Dockerfile`.
+## 3c. Flesh Out a Test Spec
+
+So far our tests were simply **Stubs** marked as pending. Now we flesh the code to test for Alpine OS. i.e. this spec:
+
+`it "should have alpine OS" do`
+
+> How do we validate that the OS inside the Docker container is _indeed_ Alpine? We can parse the output of `/etc/os-release` for one solution.
+
+* First we write a little helper method, `os_release`, within [`Dockerfile_spec.rb`](Dockerfile_spec.rb)
+* The helper returns the output of `/etc/os-release`.
+* On an Alpine OS the output is
+
+```
+/ # cat /etc/os-release 
+NAME="Alpine Linux"
+ID=alpine
+VERSION_ID=3.7.0
+PRETTY_NAME="Alpine Linux v3.7"
+HOME_URL="http://alpinelinux.org"
+BUG_REPORT_URL="http://bugs.alpinelinux.org"
+```
+
+![docker-tdd-developing-specs](https://user-images.githubusercontent.com/13379978/36944974-82ca7f58-1fcc-11e8-9f6c-1f87f90ed4c1.gif)
+
+
+* Next, let's write the test that uses the helper.
+* The test will run the helper method `os_release` and verify it contains the word "alpine" as well as "3.7.0".
+
+![docker-tdd-developing-specs-2](https://user-images.githubusercontent.com/13379978/36944975-8309cdc0-1fcc-11e8-9d64-859ffbcc954c.gif)
+
+## 3d. Run the Tests
+
+Now we rerun the tests. Again, using 
+
+```
+bundle exec rspec
+```
+
+Et Voila, we now have _one passing test_ :heavy_check_mark: ! You should see the following output:
+
+![image](https://user-images.githubusercontent.com/13379978/37237963-fe048c1c-2441-11e8-8171-9914e2ba9534.png)
+
+And totally, 5 specs ran, of which 1 passed and 4 are pending:
+
+![image](https://user-images.githubusercontent.com/13379978/36944996-da30f3bc-1fcc-11e8-9625-382c169b35a8.png)
+
 
 ## References
 

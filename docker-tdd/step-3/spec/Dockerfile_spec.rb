@@ -31,6 +31,9 @@ describe "Dockerfile" do
         pending("not yet implemented")
         raise "todo"
     end
+
+    # This is a test that will pass because its
+    # been implemented in the Dockerfile.
   
     it "should have alpine OS" do
         expect(os_release).to contain("alpine").and contain("3.7.0")
