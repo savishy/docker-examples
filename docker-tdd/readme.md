@@ -10,27 +10,33 @@ TDD is a software-development concept. Here we are demonstrating how *some aspec
 ### Prerequisites
 
 1. A Linux system with the ability to run Ruby, Gems and Bundler is required.
+1. Docker `17.05-ce` or greater should be installed.
 1. A basic knowledge of Ruby, Rubygems, Gemfiles and Bundler is advised.
 1. Understanding of the Docker API for Ruby is advised.
 
-### Step 1. Create the stubs.
+### Step 1. Create the directory structure.
 
 First we create the stub files and folders necessary.
 
 See [step-1](step-1/) directory for details.
 
-### Step 2. Write the specs.
+### Step 2. Create Failing Tests.
 
 * Next, we flesh out the specs (or "behavior" if you will) of our Docker image.
-* At this stage, we do not have any content in our `Dockerfile` as yet. 
-* We _do_, however, have a set of specs for the `Dockerfile` that when executed, fail. 
 * See [step-2](step-2/) directory for detail.
 
-### Step 3. Create the Dockerfile.
+### Step 3. Create the Dockerfile and Make Tests Pass.
 
 * Next we flesh out our Dockerfile so as to fulfil the specs.
 * After incrementally filling out our `Dockerfile` we execute the spec each time.
 * See [step-3](step-3/) directory.
+
+### Step 4. Loop: Implement `Dockerfile`, Make Tests Pass, Refactor!
+
+* Continue implementing the rest of the tests. 
+* Watch the tests fail, implement your `Dockerfile` and rerun the tests until they pass.
+* Refactor as necessary.
+* See [step-4](step-4/) directory.
 
 ## Walkthrough (How it was done)
 

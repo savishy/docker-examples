@@ -1,4 +1,4 @@
-# Step 2. Failing Tests
+# Step 2. Create Failing Tests
 
 ## 2a. Define the Spec
 

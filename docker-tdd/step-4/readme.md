@@ -20,6 +20,10 @@ Take a look at the file [`specs/Dockerfile_specs.rb`](specs/Dockerfile_specs.rb)
 
 See [`Dockerfile`](Dockerfile).
 
+## 4d. Refactor!
+
+The [`Dockerfile_specs.rb`](specs/Dockerfile_specs.rb) is definitely not in an optimal state. You can refactor it as needed, all the time following the above loop.
+
 ## My TDD Journey
 
 My journey to making tests pass looked something like this:

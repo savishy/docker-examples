@@ -1,4 +1,4 @@
-# Step 3. Start Implementing The Dockerfile and Make Tests Pass
+# Step 3. Create the Dockerfile and Make Tests Pass
 
 
 ## 3a. Write a line in your `Dockerfile`
