@@ -14,10 +14,11 @@ Let's define some simple specs - we will write tests for the following:
 
 | Key | Value |
 |-----|-------|
-| Image OS | Alpine |
-| Java Version | 8.x |
+| Maintainer Label | should be present |
+| Image OS | Alpine Linux 3.7.0 |
+| Java Version | `1.8.0` |
 | Application Dir | `/app` |
-| Maintainer Label | should have `Vish` |
+| Application Artifact | `/app/petclinic.jar` |
 
 > :exclamation: *We can write more detailed specs, of course - for example based on how the running container would behave.*
 > This is left as an exercise for you :)
