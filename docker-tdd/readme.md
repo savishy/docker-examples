@@ -5,6 +5,12 @@ TDD is a software-development concept. Here we are demonstrating how *some aspec
 * This example demonstrates using some aspects of Test-Driven Development to develop an example Dockerfile.
 * Each subdirectory here will give you a step-by-step understanding of *how our Dockerized application evolves*.
 
+## About our Application
+
+* We are creating a Dockerized version of a Spring-Boot Java app - [petclinic](http://github.com/savishy/spring-petclinic).
+* A binary JAR of this has already been compiled and uploaded here: [spring-petclinic-1.5.1.jar](https://github.com/savishy/spring-petclinic/releases/download/v1.5.1/spring-petclinic-1.5.1.jar)
+
+
 ## How To Use
 
 ### Prerequisites

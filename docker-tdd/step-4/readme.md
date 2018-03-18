@@ -53,8 +53,6 @@ All Passed! :heavy_check_mark: :heavy_check_mark: :heavy_check_mark: :heavy_chec
 ![image](https://user-images.githubusercontent.com/13379978/37238926-c0380f98-2456-11e8-8e6b-d4db9b6f2f7a.png)
 
 
-
-
 ## Known Issue - `java -version` output goes to `stderr` instead of `stdout`
 
 * Open the [`Dockerfile_spec.rb`](spec/Dockerfile_spec.rb) in this directory.
@@ -62,4 +60,29 @@ All Passed! :heavy_check_mark: :heavy_check_mark: :heavy_check_mark: :heavy_chec
 * The answer is in this [Github issue discussion](https://github.com/test-kitchen/test-kitchen/issues/773).
 * Long story short: `java -version` output is sent to `stderr`. This has been [known since the year 2000](https://bugs.java.com/bugdatabase/view_bug.do?bug_id=4380614) and likely will never change.
 
+# Our Dockerized Petclinic App!
 
+During the testing process, our tested Docker image has been created, `savishy/tomcat-petclinic-tdd`.
+
+Run a container off the image:
+
+```
+docker run -p 8080:8080 savishy/tomcat-petclinic-tdd
+```
+
+Open `http://localhost:8080` in a browser.
+
+![image](https://user-images.githubusercontent.com/27913105/37565772-89c5155c-2ad5-11e8-8ee4-ec416db5d63d.png)
+
+
+# Next Steps
+
+Certainly this is not "the end" of our TDD journey. 
+
+1. Can you figure out how to develop tests for the running container?
+1. More tests can certainly be added - for example: 
+    1. to verify the application port
+    1. to verify the image layer counts etc.
+1. And the `spec/Dockerfile.rb` file is not optimal. How would you peel out the helpers into a separate directory?
+
+Go figure it out!
