@@ -5,6 +5,7 @@ In [Step-2](../step-2) we created some failing tests. Now let's create functiona
 ## 3a. Write a line in your `Dockerfile`
 
 * As defined in our tests, we need an Alpine-based image containing OpenJDK, i.e [`openjdk:8-alpine`](https://hub.docker.com/_/openjdk/).
+* So lets write the first line in our Dockerfile.
 
 ![docker-tdd-from-openjdk](https://user-images.githubusercontent.com/13379978/36944982-8d7a131e-1fcc-11e8-8d0e-efadf2131a23.gif)
 
