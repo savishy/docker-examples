@@ -63,9 +63,3 @@ All Passed! :heavy_check_mark: :heavy_check_mark: :heavy_check_mark: :heavy_chec
 * Long story short: `java -version` output is sent to `stderr`. This has been [known since the year 2000](https://bugs.java.com/bugdatabase/view_bug.do?bug_id=4380614) and likely will never change.
 
 
-## References
-
-1. [Guidelines for writing RSpec Tests](http://www.betterspecs.org/)
-1. [The ServerSpec documentation](http://serverspec.org/resource_types.html)
-1. [Docker API for Ruby](https://github.com/swipely/docker-api)
-1. Existing articles on TDD and Docker: [1](https://www.unixdaemon.net/tools/testing-dockerfiles-with-serverspec/), [2](https://medium.com/@jesseadametz/test-driven-development-for-your-dockerfiles-350d4d415df7), [3](https://robots.thoughtbot.com/tdd-your-dockerfiles-with-rspec-and-serverspec)

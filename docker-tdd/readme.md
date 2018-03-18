@@ -16,9 +16,8 @@ TDD is a software-development concept. Here we are demonstrating how *some aspec
 
 ### Step 1. Create the directory structure.
 
-First we create the stub files and folders necessary.
-
-See [step-1](step-1/) directory for details.
+* First we create the stub files and folders necessary.
+* See [step-1](step-1/) directory for details.
 
 ### Step 2. Create Failing Tests.
 
@@ -38,20 +37,13 @@ See [step-1](step-1/) directory for details.
 * Refactor as necessary.
 * See [step-4](step-4/) directory.
 
-## Walkthrough (How it was done)
-
-1. First create the stub files `Gemfile`, `spec/Dockerfile_spec.rb`. ( ()[https://github.com/savishy/docker-examples/tree/0e0438452b11cff040b0099aec23f3d794a244d1/docker-tdd](0e043) ) 
-
-1. Write a Failing Test.
-
-1. Execute the test 
-
-![image](https://user-images.githubusercontent.com/13379978/36203748-a0f17c10-11ae-11e8-886f-d0043750411f.png)
-
 
 ## References
 
 1. [Serverspec](http://serverspec.org/)
-1. [This great article](https://medium.com/@jesseadametz/test-driven-development-for-your-dockerfiles-350d4d415df7)
 1. [This gist](https://gist.github.com/jadametz/f131def1253bbfe6f2d5ef975c20b768#file-docker-serverspec-tree)
 1. [Rspec: creating pending examples](https://relishapp.com/rspec/rspec-core/v/2-4/docs/pending/pending-examples#pending-implementation)
+1. [Guidelines for writing RSpec Tests](http://www.betterspecs.org/)
+1. [The ServerSpec documentation](http://serverspec.org/resource_types.html)
+1. [Docker API for Ruby](https://github.com/swipely/docker-api)
+1. Existing articles on TDD and Docker: [1](https://www.unixdaemon.net/tools/testing-dockerfiles-with-serverspec/), [2](https://medium.com/@jesseadametz/test-driven-development-for-your-dockerfiles-350d4d415df7), [3](https://robots.thoughtbot.com/tdd-your-dockerfiles-with-rspec-and-serverspec)

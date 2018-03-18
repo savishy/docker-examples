@@ -1,5 +1,6 @@
 # Step 3. Create the Dockerfile and Make Tests Pass
 
+In [Step-2](../step-2) we created some failing tests. Now let's create functionality in our Dockerfile to make those tests pass.
 
 ## 3a. Write a line in your `Dockerfile`
 
@@ -68,9 +69,6 @@ And totally, 5 specs ran, of which 1 passed and 4 are pending:
 ![image](https://user-images.githubusercontent.com/13379978/36944996-da30f3bc-1fcc-11e8-9625-382c169b35a8.png)
 
 
-## References
+## On to Step 4!
 
-1. [Guidelines for writing RSpec Tests](http://www.betterspecs.org/)
-1. [The ServerSpec documentation](http://serverspec.org/resource_types.html)
-1. [Docker API for Ruby](https://github.com/swipely/docker-api)
-1. Existing articles on TDD and Docker: [1](https://www.unixdaemon.net/tools/testing-dockerfiles-with-serverspec/), [2](https://medium.com/@jesseadametz/test-driven-development-for-your-dockerfiles-350d4d415df7), [3](https://robots.thoughtbot.com/tdd-your-dockerfiles-with-rspec-and-serverspec)
+Proceed to [step 4](../step-4)!

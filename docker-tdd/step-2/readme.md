@@ -1,5 +1,7 @@
 # Step 2. Create Failing Tests
 
+In [Step-1](../step-1), we created the directory structure. Now let's create some sample tests that fail.
+
 ## 2a. Define the Spec
 
 * Now we spec out our Docker container. 
@@ -30,12 +32,6 @@ The failure will be similar to the GIF Below - it will likely complain about an 
 
 ![docker-tdd-2 2](https://user-images.githubusercontent.com/13379978/36944636-c7fed2f0-1fc6-11e8-97f7-9320d02cd1f0.gif)
 
+## On to Step 3!
 
-In the next Step 3, we will flesh out our `Dockerfile`.
-
-## References
-
-1. [Guidelines for writing RSpec Tests](http://www.betterspecs.org/)
-1. [The ServerSpec documentation](http://serverspec.org/resource_types.html)
-1. [Docker API for Ruby](https://github.com/swipely/docker-api)
-1. Existing articles on TDD and Docker: [1](https://www.unixdaemon.net/tools/testing-dockerfiles-with-serverspec/), [2](https://medium.com/@jesseadametz/test-driven-development-for-your-dockerfiles-350d4d415df7), [3](https://robots.thoughtbot.com/tdd-your-dockerfiles-with-rspec-and-serverspec)
+Proceed to the [step-3](../step-3) directory where we will flesh out our `Dockerfile` with functionality.

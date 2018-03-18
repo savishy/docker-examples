@@ -16,3 +16,8 @@ We will use Serverspec for this, which is a Ruby gem. We create a `Gemfile` in t
 * This maps the dependencies 
 
 ![docker-tdd-1](https://user-images.githubusercontent.com/13379978/36942734-177e1dda-1fa0-11e8-8f63-0f3b4e614284.gif)
+
+
+## On to Step 2!
+
+Proceed to the [step-2](../step-2) directory where we will write some failing tests.
