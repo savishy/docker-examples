@@ -1,0 +1,33 @@
+version: '3'
+services:
+
+  petclinic-qa:
+    build: '.'
+    ports:
+    - '8081:8080'
+    depends_on:
+    - db-qa
+    volumes:
+    - './petclinic-qa/application.properties:/app/application.properties'
+    environment:
+      JAVA_OPTS: ''
+    command: ["/app/./wait-for-it.sh", "db-qa:3306", "-s", "-t", "60", "--", "java", '${JAVA_OPTS}', "-jar", '/app/petclinic.jar', '--spring.config.location=/app/application.properties' ]
+    networks:
+    - petclinic-qa
+
+  db-qa:
+    image: mysql:5.7
+    ports:
+    - '3307:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: C4ngM3n0000w
+      MYSQL_DATABASE: petclinic-qa
+    volumes:
+    - /opt/mysql-data-db-qa/:/var/lib/mysql
+    networks:
+    - petclinic-qa
+
+networks:
+  petclinic-qa:
+    driver: bridge
+
