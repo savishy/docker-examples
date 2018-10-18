@@ -1,0 +1,32 @@
+version: '3'
+services:
+  firefox:
+    image: selenium/node-firefox:3.14.0-europium
+    volumes:
+    - /dev/shm:/dev/shm
+    depends_on:
+    - hub
+    environment:
+      HUB_HOST: hub
+
+  chrome:
+    image: selenium/node-chrome:3.14.0-europium
+    volumes:
+    - /dev/shm:/dev/shm
+    depends_on:
+    - hub
+    environment:
+      HUB_HOST: hub
+
+  hub:
+    image: selenium/hub:3.14.0-europium 
+    ports:
+    - "4444:4444"
+
+  pt:
+    build: protractor/
+    depends_on:
+    - hub
+    - chrome
+    - firefox
+    
